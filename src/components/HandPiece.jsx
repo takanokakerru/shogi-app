@@ -4,8 +4,8 @@ import { IMAGES } from "../data/images";
 const cellSize = 40;
 
 export default function HandPiece({ piece, selected, onClick }) {
-    // 持ち駒は常に非成駒で表示
     const image = IMAGES.normal[piece.type];
+    const isGote = piece.side === "gote";
 
     return (
         <div
@@ -26,7 +26,11 @@ export default function HandPiece({ piece, selected, onClick }) {
                 <img
                     src={image}
                     alt={piece.type}
-                    style={{ width: cellSize - 4, height: cellSize - 4 }}
+                    style={{
+                        width: cellSize - 4,
+                        height: cellSize - 4,
+                        transform: isGote ? "rotate(180deg)" : "none",
+                    }}
                 />
             )}
         </div>

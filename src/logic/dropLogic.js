@@ -4,9 +4,19 @@ export function canDrop(piece, x, y, pieces, handPieces) {
     if (pieces.some(p => p.x === x && p.y === y)) return false;
     // 2. 歩の二歩チェック
     if (piece.type === "fu") {
-        if (pieces.some(p => p.side === piece.side && p.type === "fu" && p.x === x))
+        if (
+            pieces.some(
+                p =>
+                    p.side === piece.side &&
+                    p.type === "fu" &&
+                    !p.promoted &&   // ← 成り歩は除外
+                    p.x === x
+            )
+        ) {
             return false;
+        }
     }
+
     // 3. 歩・香・桂は最後列に打てない
     if (piece.side === "sente") {
         if ((piece.type === "fu" || piece.type === "kyo") && y === 0) return false;

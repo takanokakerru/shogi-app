@@ -1,4 +1,3 @@
-// src/components/ShogiBoard.jsx
 import React, { useState } from "react";
 import { initialPieces } from "../data/initialPieces";
 import Piece from "./Piece";
