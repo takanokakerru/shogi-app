@@ -69,6 +69,16 @@ export function handlePieceClick({
         }
         return;
     }
+    
+    if (
+        selectedIndex !== null &&
+        targetIndex !== -1 &&
+        pieces[targetIndex].side === "sente" &&
+        targetIndex !== selectedIndex
+    ) {
+        setSelectedIndex(targetIndex);
+        return;
+    }
 
     // 選択中の駒で移動
     const piece = pieces[selectedIndex];

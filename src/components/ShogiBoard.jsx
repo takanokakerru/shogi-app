@@ -4,6 +4,8 @@ import Piece from "./Piece";
 import HandPiecesDisplay from "./HandPiecesDisplay";
 import { canMoveTo } from "../logic/moveLogic";
 import { handlePieceClick } from "../logic/handlePieceClick";
+import Button from "@mui/material/Button";
+
 
 const boardSize = 9;
 const cellSize = 60;
@@ -16,8 +18,36 @@ export default function ShogiBoard() {
   const [handPieces, setHandPieces] = useState([]);
   const [selectedHandIndex, setSelectedHandIndex] = useState(null);
 
+  function restartGame() {
+    // 盤面を初期状態に戻す
+    setPieces(structuredClone(initialPieces));
+
+    // 選択状態リセット
+    setSelectedIndex(null);
+    setSelectedHandIndex(null);
+
+    // 手駒リセット
+    setHandPieces([]);
+
+    // 勝敗リセット
+    setWinner(null);
+
+    // 手番を最初に戻す（先手）
+    setTurn("sente");
+  }
+
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+
+      {/* 🔄 リスタートボタン */}
+      <Button
+        variant="contained"
+        onClick={restartGame}
+        style={{ marginBottom: 12 }}
+      >
+        🔄 リスタート
+      </Button>
+
       {/* ===== 盤面 ===== */}
       <svg
         width={cellSize * boardSize}

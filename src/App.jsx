@@ -1,19 +1,12 @@
-import ShogiBoard from "./components/ShogiBoard";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Game from "./pages/Game";
 
 export default function App() {
   return (
-    
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        minHeight: "100vh",
-      }}
-    >
-      <h1>将棋</h1>
-      <ShogiBoard />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/game" element={<Game />} />
+    </Routes>
   );
 }
-
