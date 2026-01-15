@@ -6,8 +6,15 @@ export default function HandPiecesDisplay({
     setSelectedHandIndex
 }) {
     return (
-        <div style={{ display: "flex", justifyContent: "space-between", marginTop: 10 }}>
-
+        <div
+            style={{
+                display: "flex",
+                justifyContent: "flex-end", // 右寄せ
+                gap: 30,
+                marginTop: -50,
+                width: "100%",
+            }}
+        >
             {/* 先手の持ち駒 */}
             <div style={{ display: "flex", gap: 5 }}>
                 {handPieces.map((p, index) =>
@@ -35,7 +42,6 @@ export default function HandPiecesDisplay({
                     ) : null
                 )}
             </div>
-
         </div>
     );
 }
